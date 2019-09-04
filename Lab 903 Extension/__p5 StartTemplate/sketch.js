@@ -23,7 +23,7 @@ background(5,5,5, 20);
 
 function loadBalls(x){
   mainBall = new Ball(random(width/2), random(height/2), random (-.4,.4), random(-.4,.4), -1);
-  mainBall2 = new Ball(random(width/2), random(height/2), random (-.4,.4), random(-.4,.4), 0);
+  mainBall2 = new Ball(400, 400, random (-.4,.4), random(-.4,.4), 0);
   for(var i = 0; i < x; i++){
     balls[i]=new Ball(random(width), random(height), random (-1,1), random(-1,1), i+2);
   }
