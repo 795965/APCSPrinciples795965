@@ -33,6 +33,7 @@ class Ball {
 
   }
   update(){
+    var distToMainBall;
     if(this.id >= 0){
      distToMainBall = this.loc.dist(mainBall.loc);
      if(distToMainBall < 250){
@@ -47,8 +48,8 @@ class Ball {
        this.acc.mult(0.5);
      }
     }
-    this.vel.add(this.acc);
-    this.loc.add(this.vel);
+     this.vel.add(this.acc);
+     this.loc.add(this.vel);
 
 
   }
