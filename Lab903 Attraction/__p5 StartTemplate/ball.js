@@ -33,8 +33,19 @@ class Ball {
 
   }
   update(){
-    // if(id >0 ){
-    //   var distfromMainBall =
+    if(this.id >= 0){
+     distToMainBall = this.loc.dist(mainBall.loc);
+     if(distToMainBall < 250){
+       //add attraction
+       this.acc = p5.Vector.sub(mainBall.loc, this.loc);
+       this.acc.normalize();
+       this.acc.mult(0.1);
+     }
+     if(distToMainBall < 150){
+       this.acc = p5.Vector.sub(mainBall.loc, this.loc);
+       this.acc.normalize();
+       this.acc.mult(0.5);
+     }
     }
     this.vel.add(this.acc);
     this.loc.add(this.vel);
