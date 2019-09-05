@@ -1,5 +1,5 @@
 //Ziggy Sheynin
-//Lab 828 Vectors
+//Lab 903 Extension
 
 class Ball {
   constructor(x, y, dx, dy, id){
@@ -64,6 +64,21 @@ class Ball {
        this.acc.mult(0.5);
      }
     }
+    var distToMainBall3;
+    if(this.id > 0){
+     distToMainBall3 = this.loc.dist(mainBall3.loc);
+     if(distToMainBall3 < 250){
+       //add attraction
+       this.acc = p5.Vector.sub(mainBall3.loc, this.loc);
+       this.acc.normalize();
+       this.acc.mult(0.1);
+     }
+     if(distToMainBall3 < 150){//
+       this.acc = p5.Vector.sub(this.loc, mainBall3.loc);
+       this.acc.normalize();
+       this.acc.mult(0.5);
+     }
+   }
     this.vel.limit(5);
      this.vel.add(this.acc);
    this.loc.add(this.vel);
