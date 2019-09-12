@@ -1,27 +1,33 @@
-//  Your Name
-// 	Date or version number
+//  Ziggy Sheynin
+// 	Lab 911 Collision Detection
 //  This is a comment
 //  The setup function function is called once when your program begins
-var b1, b2, b3;
-
+var balls = []
+var paddle;
 function setup() {
   var cnv = createCanvas(800, 800);
   cnv.position((windowWidth-width)/2, 30);
   background(5, 5, 5);
   fill(200, 30, 150);
-  b1 = new Ball(random(50, 200), random(50, 200), random(5,50), random(5,50));
-  b2 = new Ball(random(800), random(800), random(5,50), random(5,50));
-  b3 = new Ball(random(800), random(800), random(5,50), random(5,50));
-
-
+  loadObjects(50);
 
 
 }
 
 //  The draw function is called @ 30 fps
 function draw() {
-
-  b1.run();
-  b2.run();
-  b3.run();
+  background(5, 5, 5, 20);
+  runObjects();
+}
+function loadObjects(n){
+  paddle = new Paddle(400, 400);
+  for(var i = 0; i < n; i++){
+    balls[i] = new Ball(random(width), random(height), random(-1, 1), random(-1, 1));
+  }
+}//loads balls into array
+function runObjects(){
+  paddle.run();
+  for(var i = 0; i < balls.length; i++){
+    balls[i].run();
+  }
 }
