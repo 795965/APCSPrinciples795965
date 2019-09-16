@@ -1,6 +1,6 @@
 //  Ziggy Sheynin
-// 	Lab 911 Collision Detection
-//  This is a comment
+//Project 916 PaddleGame
+////  This is a comment
 //  The setup function function is called once when your program begins
 var balls = []
 var paddle;
@@ -9,6 +9,7 @@ function setup() {
   cnv.position((windowWidth-width)/2, 30);
   background(5, 5, 5);
   fill(200, 30, 150);
+
   loadObjects(1);
 
 
@@ -18,11 +19,13 @@ function setup() {
 function draw() {
   background(5, 5, 5);
   runObjects();
+  var i = 0;
+  text("Score: ", 100, 0, 70, 70);
 }
 function loadObjects(n){
   paddle = new Paddle(400, 400, 150, 30);
   for(var i = 0; i < n; i++){
-    balls[i] = new Ball(random(width), random(height), 15, 15);
+    balls[i] = new Ball(random(width), 0, 15, 15);
   }
 }//loads balls into array
 function runObjects(){

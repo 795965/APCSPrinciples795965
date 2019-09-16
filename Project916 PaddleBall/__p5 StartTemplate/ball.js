@@ -6,7 +6,7 @@ class Ball{
   constructor(x,y,dx,dy){
     this.loc = createVector(x, y);
     this.vel = createVector(dx, dy);
-    this.acc = createVector(0, 0.1);
+    this.acc = createVector(0, 0.5);
     this.clr = color(random(255),random(255),random(255));
     this.w = 15;
   }
@@ -15,7 +15,8 @@ class Ball{
       this.checkEdges();
       this.update();
       this.render();
-      this.Bounce();
+      this.removeBall();
+    //  this.bounce();
 
   }
   render(){
@@ -39,24 +40,38 @@ class Ball{
   }
   update(){
 
-    // this.vel.add(this.acc);
+    this.vel.add(this.acc);
     this.loc.add(this.vel);
 
   }
-  IsColliding(){
+  IsCollidingTop(){
     if (this.loc.x > paddle.loc.x &&
       this.loc.x < paddle.loc.x + paddle.w &&
-      this.loc.y > paddle.loc.y &&
-      this.loc.y < paddle.loc.y + paddle.h) {
+      this.loc.y > paddle.loc.y ){
       return true;
     } else {
       return false;
     }
   }
-  Bounce(){
-    if (this.IsColliding() === true){
-      this.vel.x = -this.vel.x;
-      this.vel.y = -this.vel.y;
+  // IsCollidingBottom(){
+  //   if(this.loc.y < paddle.loc.y + paddle.h) {
+  //     return true;
+  //   } else{
+  //     return false;
+  //   }
+
+  //}
+  removeBall(){
+    if (this.IsCollidingTop() === true){
+      // this.vel.x = -this.vel.x;
+      // this.vel.y = -this.vel.y;
+      balls.splice(0);
 }
   }
+  // bounce(){
+  //   if (this.IsCollidingBottom() === true){
+  //   this.vel.x = -this.vel.x;
+  //     this.vel.y = -this.vel.y;
+  //   }
+  // }
 }//Class end

@@ -15,7 +15,7 @@ class Paddle {
      rect(this.loc.x, this.loc.y, this.w, this.h);
    }
    update(){
-    var mouseLoc = createVector(mouseX, mouseY);
+    var mouseLoc = createVector(mouseX, 650);
     this.loc = p5.Vector.lerp(this.loc, mouseLoc, .09); //lerp = p5 js funtion for object following mouse
     //makes paddle move with mouse
    }
