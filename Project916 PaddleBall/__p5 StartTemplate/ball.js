@@ -3,12 +3,12 @@
 
 // var isColliding = true;
 class Ball{
-  constructor(x,y,dx,dy){
+  constructor(x,y,dx,dy, id){
     this.loc = createVector(x, y);
     this.vel = createVector(dx, dy);
     this.acc = createVector(0, 0.5);
     this.clr = color(random(255),random(255),random(255));
-    this.w = 15;
+    this.id = id;
   }
   run(){
 
