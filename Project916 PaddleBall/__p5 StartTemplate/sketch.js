@@ -68,6 +68,10 @@ function startGame(){//easy, medium, hard
   textSize(40);
   textAlign(CENTER);
   text("Instructions", 655, 145);
+
+  if( mouseX < 50 && mouseX > 250 && mouseY < 610 && mouseY > 710){
+    gameState = 3;
+  }
 }
 function playGame(){//starts the game after player chooses difficulty
   runObjects();
@@ -84,4 +88,10 @@ function runObjects(){
   for(var i = 0; i < balls.length; i++){
     balls[i].run();
   }
+
 }
+  function endGame(){
+    fill(255, 0, 0)
+      textSize(100)
+      text("GAME OVER", 100, 400)
+    }
