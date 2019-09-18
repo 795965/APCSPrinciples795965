@@ -42,33 +42,32 @@ function startGame(){//easy, medium, hard
   text("Paddle Game", 400, 300); // title text
 
   fill(0,200,0); //easy button
-  rect(50, 610, 150, 100);
+  rect(50, 610, 200, 100);
   fill(0,0,0);
   textSize(40);
   textAlign(CENTER);
-  text("Easy", 110, 675);
+  text("Easy", 150, 675);
 
   fill(0,204,204); //medium button
-  rect(250, 610, 150, 100);
+  rect(300, 610, 200, 100);
   fill(0,0,0);
   textSize(40);
   textAlign(CENTER);
-  text("Medium", 300, 675);
+  text("Medium", 400, 675);
 
   fill(153,0,0); //hard button
-  rect(600, 610, 150, 100);
+  rect(550, 610, 200, 100);
   fill(0,0,0);
   textSize(40);
   textAlign(CENTER);
   text("Hard", 650, 675);
 
   fill(179,179,179); //Instructions button
-  //rectMode(CENTER);
-  rect(550, 100, 250, 100);
+  rect(550, 75, 210, 100);
   fill(0,90,0);
   textSize(40);
   textAlign(CENTER);
-  text("Instructions", 650, 150);
+  text("Instructions", 655, 145);
 }
 function playGame(){//starts the game after player chooses difficulty
   runObjects();
