@@ -2,35 +2,31 @@
 //Project 916 PaddleGame
 ////  This is a comment
 //  The setup function function is called once when your program begins
-var balls = []; //ball array
-var paddle; //global varibale for paddle
+
+var balls = []; //declares array
+var paddle;
+var difficulty;
+var score =0;
+var gameState = 1;
+
 function setup() {
   var cnv = createCanvas(800, 800);
   cnv.position((windowWidth-width)/2, 30);
   background(5, 5, 5);
-  fill(200, 30, 150);
-
-  loadObjects(5);
-
-
+  loadObjects(30); //number of balls
 }
 
 //  The draw function is called @ 30 fps
 function draw() {
-  background(5, 5, 5);
-  // runObjects();
-  // var i = 0;
-  // textSize(45);
-  // text("Score: ", 100, 40, 70, 70);
 
-  var gameState = 1; // creating splash screen
-  if(gameState=== 1){
-    startGame();
-  } else if(gameState === 2){
-    playGame();
-  }else if(gameState === 3){
-    endGame();
-  }
+background(5,5,5);
+if (gameState ===1){
+  startGame(); //start screen
+}else if (gameState === 2){
+  playGame(); //game screen
+}else if (gameState === 3){
+  endGame(); //game over screen
+}
 }
 
 
@@ -73,25 +69,51 @@ function startGame(){//easy, medium, hard
     gameState = 3;
   }
 }
-function playGame(){//starts the game after player chooses difficulty
+mouseClicked();
+
+}// end start game
+
+function playGame(){
+  fill (255);
+  textSize (40);
+  text ("SCORE:" + score, 20 , 50);
   runObjects();
 }
-function loadObjects(n){
 
-  paddle = new Paddle(400, 400, 150, 30);
-  for(var i = 0; i < n; i++){
-    balls[i] = new Ball(random(width), 0, 15, 15);
-  }
-}//loads balls into array
-function runObjects(){
-  paddle.run();
-  for(var i = 0; i < balls.length; i++){
-    balls[i].run();
-  }
+function endGame(){ //
+textSize(80);
+fill (255,5, 5);
+text ("GAME OVER", 150, 250);
 
 }
-  function endGame(){
-    fill(255, 0, 0)
-      textSize(100)
-      text("GAME OVER", 100, 400)
-    }
+
+function mouseClicked(){
+  if (mouseX > 50 && mouseX < 250 && mouseY > 450 && mouseY < 650){// over easy button
+    difficulty = 1;
+    gameState =2;
+  } else if (mouseX > 300 && mouseX < 500 && mouseY > 450 && mouseY < 650){
+    difficulty = 2;
+    gameState =2;
+  }else if (mouseX > 550 && mouseX < 750 && mouseY > 450 && mouseY < 650){
+    difficulty = 3;
+    gameState =2;
+  }
+  return false;
+}
+function loadObjects(x){
+  paddle = new Paddle (400, 500, 150, 40);
+  for(var i = 0; i < x; i++){
+    balls[i]=new Ball(random(width), 0 , 4,4, i);
+  }
+}
+
+function runObjects(){
+paddle.run();
+for(var i = 0; i < balls.length; i++){
+    balls[i].run();
+}
+}
+
+function checkDifficulty(){
+
+}
