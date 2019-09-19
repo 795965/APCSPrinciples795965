@@ -68,7 +68,7 @@ function startGame(){//easy, medium, hard
   if( mouseX < 50 && mouseX > 250 && mouseY < 610 && mouseY > 710){
     gameState = 3;
   }
-}
+
 mouseClicked();
 
 }// end start game
@@ -76,7 +76,7 @@ mouseClicked();
 function playGame(){
   fill (255);
   textSize (40);
-  text ("SCORE:" + score, 20 , 50);
+  text ("SCORE:" + score, 100 , 50);
   runObjects();
 }
 
