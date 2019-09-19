@@ -13,8 +13,16 @@ function setup() {
   var cnv = createCanvas(800, 800);
   cnv.position((windowWidth-width)/2, 30);
   background(5, 5, 5);
-  loadObjects(30); //number of balls
-}
+  loadObjects(10);
+
+//   if(difficulty === 1){
+//     loadObjectS(5);
+//   } else if (difficulty === 2){
+//     loadObjects (10);
+//   } else if (difficulty === 3){
+//     loadObjects(40);
+// }
+  }
 
 //  The draw function is called @ 30 fps
 function draw() {
@@ -23,8 +31,14 @@ background(5,5,5);
 if (gameState ===1){
   startGame(); //start screen
 }else if (gameState === 2){
-  playGame(); //game screen
+  playGameEasy(); //game screen
 }else if (gameState === 3){
+  playGameMedium(); //game screen
+}
+else if (gameState === 4){
+  playGameHard(); //game screen
+}
+else if (gameState === 5){
   endGame(); //game over screen
 }
 }
@@ -68,18 +82,37 @@ function startGame(){//easy, medium, hard
   if( mouseX < 50 && mouseX > 250 && mouseY < 610 && mouseY > 710){
     gameState = 3;
   }
+  // if()
 
 mouseClicked();
 
 }// end start game
 
-function playGame(){
+function playGameEasy(){
   fill (255);
   textSize (40);
   text ("SCORE:" + score, 100 , 50);
+  LoadObjects(5);
+  runObjects();
+
+}
+
+function playGameMedium(){
+  fill (255);
+  textSize (40);
+  text ("SCORE:" + score, 100 , 50);
+  LoadObjects(10);
   runObjects();
 }
 
+function playGameHard(){
+  fill (255);
+  textSize (40);
+  text ("SCORE:" + score, 100 , 50);
+  LoadObjects(40);
+  runObjects();
+
+}
 function endGame(){ //
 textSize(80);
 fill (255,5, 5);
@@ -88,15 +121,15 @@ text ("GAME OVER", 150, 250);
 }
 
 function mouseClicked(){
-  if (mouseX > 50 && mouseX < 250 && mouseY > 450 && mouseY < 650){// over easy button
+  if (mouseX > 50 && mouseX < 250 && mouseY > 600 && mouseY < 630){// over easy button
     difficulty = 1;
-    gameState =2;
-  } else if (mouseX > 300 && mouseX < 500 && mouseY > 450 && mouseY < 650){
+  //  gameState =2;
+  } else if (mouseX > 300 && mouseX < 500 && mouseY > 600 && mouseY < 630){
     difficulty = 2;
-    gameState =2;
-  }else if (mouseX > 550 && mouseX < 750 && mouseY > 450 && mouseY < 650){
+  //  gameState =2;
+  }else if (mouseX > 550 && mouseX < 750 && mouseY > 600 && mouseY < 630){
     difficulty = 3;
-    gameState =2;
+  //  gameState =2;
   }
   return false;
 }

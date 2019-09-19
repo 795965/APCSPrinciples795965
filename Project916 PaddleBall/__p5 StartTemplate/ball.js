@@ -42,7 +42,8 @@ if (this.id%2 === 0){ //makes half balls red
 isColliding(){ //Is the ball touching the paddle
   if (this.loc.x> paddle.loc.x &&
     this.loc.x < paddle.loc.x +paddle.w &&
-  this.loc.y > paddle.loc.y && this.loc.y < paddle.loc.y +paddle.h){
+  this.loc.y > paddle.loc.y && this.loc.y < paddle.loc.y +paddle.h
+&& this.vel.y >0){
     return true;
   } else{
     return false;
@@ -61,9 +62,9 @@ if (this.vel.y > 0 ){
 }
 
 score(){//adds points if green ball is removed and takes them away if red ball is removed
-  if (this.removeBall()===true && this.id %2 === 1){
+  if (this.isColliding()===true && this.id %2 === 1){
     score ++;
-  }else if (this.removeBall() === true && this.id %2 ===0){
+  }else if (this.isColliding() === true && this.id %2 ===0){
     score--;
   }
 }
