@@ -13,7 +13,7 @@ function setup() {
   var cnv = createCanvas(800, 800);
   cnv.position((windowWidth-width)/2, 30);
   background(5, 5, 5);
-  loadObjects(10);
+//  loadObjects(10);
 
 //   if(difficulty === 1){
 //     loadObjectS(5);
@@ -123,13 +123,13 @@ text ("GAME OVER", 150, 250);
 function mouseClicked(){
   if (mouseX > 50 && mouseX < 250 && mouseY > 600 && mouseY < 630){// over easy button
     difficulty = 1;
-  //  gameState =2;
-  } else if (mouseX > 300 && mouseX < 500 && mouseY > 600 && mouseY < 630){
+    gameState =2;
+  } else if (mouseX > 300 && mouseX < 500 && mouseY > 600 && mouseY < 630){//over medium button
     difficulty = 2;
-  //  gameState =2;
-  }else if (mouseX > 550 && mouseX < 750 && mouseY > 600 && mouseY < 630){
+   gameState =3;
+ }else if (mouseX > 550 && mouseX < 750 && mouseY > 600 && mouseY < 630){ ///over hard button
     difficulty = 3;
-  //  gameState =2;
+    gameState =4;
   }
   return false;
 }
