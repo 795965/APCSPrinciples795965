@@ -32,11 +32,11 @@ if (gameState ===1){
   startGame(); //start screen
 }else if (gameState === 2){
   playGameEasy(); //game screen
-}else if (gameState === 3){
-  playGameMedium(); //game screen
-}
-else if (gameState === 4){
-  playGameHard(); //game screen
+// }else if (gameState === 3){
+//   playGameMedium(); //game screen
+// }
+// else if (gameState === 4){
+//   playGameHard(); //game screen
 }
 else if (gameState === 5){
   endGame(); //game over screen
@@ -97,22 +97,22 @@ function playGameEasy(){
 
 }
 
-function playGameMedium(){
-  fill (255);
-  textSize (40);
-  text ("SCORE:" + score, 100 , 50);
-  LoadObjects(10);
-  runObjects();
-}
-
-function playGameHard(){
-  fill (255);
-  textSize (40);
-  text ("SCORE:" + score, 100 , 50);
-  LoadObjects(40);
-  runObjects();
-
-}
+// function playGameMedium(){
+//   fill (255);
+//   textSize (40);
+//   text ("SCORE:" + score, 100 , 50);
+//   LoadObjects(10);
+//   runObjects();
+// }
+//
+// function playGameHard(){
+//   fill (255);
+//   textSize (40);
+//   text ("SCORE:" + score, 100 , 50);
+//   LoadObjects(40);
+//   runObjects();
+//
+// }
 function endGame(){ //
 textSize(80);
 fill (255,5, 5);
