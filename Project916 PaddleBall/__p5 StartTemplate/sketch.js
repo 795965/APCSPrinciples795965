@@ -26,24 +26,23 @@ function setup() {
 
 //  The draw function is called @ 30 fps
 function draw() {
-
 background(5,5,5);
 if (gameState ===1){
   startGame(); //start screen
 }else if (gameState === 2){
-  playGameEasy(); //game screen
-// }else if (gameState === 3){
-//   playGameMedium(); //game screen
-// }
-// else if (gameState === 4){
-//   playGameHard(); //game screen
+  playGame(); //game screen
 }
-else if (gameState === 5){
+else if (gameState === 3){
   endGame(); //game over screen
 }
-}
+} //end draw
 
-
+function playGame(){
+  fill (255);
+  textSize (40);
+  text ("SCORE:" + score, 100 , 50);
+  runObjects();
+} //end playGame
 
 function startGame(){//easy, medium, hard
   textSize(75);
@@ -79,40 +78,59 @@ function startGame(){//easy, medium, hard
   textAlign(CENTER);
   text("Instructions", 655, 145);
 
-  if( mouseX < 50 && mouseX > 250 && mouseY < 610 && mouseY > 710){
-    gameState = 3;
+  //   //checks if user presses easy, medium or hard button
+  checkDifficulty();
+  //moves to next splash screen
+  if(difficulty==='easy'||difficulty==='medium'||difficulty==='hard'){
+    if(difficulty==='easy'){
+      loadObjects(5);
+    }
+    if(difficulty==='medium'){
+      loadObjects(10);
+    }
+    if(difficulty==='hard'){
+      loadObjects(25);
+    }
+    gameState=2;
+  //
   }
-  // if()
+}//end startGame
+  function loadObjects(x){
+    paddle = new Paddle (400, 500, 150, 40);
+    for(var i = 0; i < x; i++){
+      balls[i]=new Ball(random(width), 0 , 4,4, i);
+    }
+  } //end loadObjects
+  function checkDifficulty(){
+    //if mouse touches easy
+    if(mouseIsPressed&&
+        mouseX>50&&
+        mouseX<250&&
+        mouseY>600&&
+        mouseY<630){
+          difficulty='easy'
+        }
+        //if mouse touches medium
+    if(mouseIsPressed&&
+        mouseX>300&&
+        mouseX<500&&
+        mouseY>600&&
+        mouseY<630){
+          difficulty='medium'
+        }
+        //if mouse touches hard
+    if(mouseIsPressed&&
+        mouseX>550&&
+        mouseX<750&&
+        mouseY>600&&
+        mouseY<630){
+          difficulty='hard'
+        }
 
-mouseClicked();
+}// end checkDifficulty
 
-}// end start game
 
-function playGameEasy(){
-  fill (255);
-  textSize (40);
-  text ("SCORE:" + score, 100 , 50);
-  LoadObjects(5);
-  runObjects();
 
-}
-
-// function playGameMedium(){
-//   fill (255);
-//   textSize (40);
-//   text ("SCORE:" + score, 100 , 50);
-//   LoadObjects(10);
-//   runObjects();
-// }
-//
-// function playGameHard(){
-//   fill (255);
-//   textSize (40);
-//   text ("SCORE:" + score, 100 , 50);
-//   LoadObjects(40);
-//   runObjects();
-//
-// }
 function endGame(){ //
 textSize(80);
 fill (255,5, 5);
@@ -120,33 +138,16 @@ text ("GAME OVER", 150, 250);
 
 }
 
-function mouseClicked(){
-  if (mouseX > 50 && mouseX < 250 && mouseY > 600 && mouseY < 630){// over easy button
-    difficulty = 1;
-    gameState =2;
-  } else if (mouseX > 300 && mouseX < 500 && mouseY > 600 && mouseY < 630){//over medium button
-    difficulty = 2;
-   gameState =3;
- }else if (mouseX > 550 && mouseX < 750 && mouseY > 600 && mouseY < 630){ ///over hard button
-    difficulty = 3;
-    gameState =4;
-  }
-  return false;
-}
-function loadObjects(x){
-  paddle = new Paddle (400, 500, 150, 40);
-  for(var i = 0; i < x; i++){
-    balls[i]=new Ball(random(width), 0 , 4,4, i);
+function checkRed(){//checks to see if only red balls are left
+  for(var i = 0; i < balls.length; i++){
+    if(balls[i].getID()% 2 === 0){
+      
+    }
   }
 }
-
 function runObjects(){
 paddle.run();
 for(var i = 0; i < balls.length; i++){
     balls[i].run();
 }
-}
-
-function checkDifficulty(){
-
 }

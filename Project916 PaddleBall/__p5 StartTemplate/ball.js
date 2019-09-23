@@ -69,4 +69,10 @@ score(){//adds points if green ball is removed and takes them away if red ball i
   }
 }
 
+
+getID(){
+  return this.id;
+}
+
+
 }//  +++++++++++++++++++++++++++++++++++  End Ball Class
