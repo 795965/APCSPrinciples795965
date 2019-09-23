@@ -13,15 +13,7 @@ function setup() {
   var cnv = createCanvas(800, 800);
   cnv.position((windowWidth-width)/2, 30);
   background(5, 5, 5);
-//  loadObjects(10);
 
-//   if(difficulty === 1){
-//     loadObjectS(5);
-//   } else if (difficulty === 2){
-//     loadObjects (10);
-//   } else if (difficulty === 3){
-//     loadObjects(40);
-// }
   }
 
 //  The draw function is called @ 30 fps
@@ -33,8 +25,11 @@ if (gameState ===1){
   playGame(); //game screen
 }
 else if (gameState === 3){
+  instructionsText(); //game over screen
+}else if (gameState === 4){
   endGame(); //game over screen
 }
+
 } //end draw
 
 function playGame(){
@@ -81,7 +76,7 @@ function startGame(){//easy, medium, hard
   //   //checks if user presses easy, medium or hard button
   checkDifficulty();
   //moves to next splash screen
-  if(difficulty==='easy'||difficulty==='medium'||difficulty==='hard'){
+  if(difficulty==='easy'||difficulty==='medium'||difficulty==='hard'||difficulty === 'instructions'){
     if(difficulty==='easy'){
       loadObjects(5);
     }
@@ -92,7 +87,11 @@ function startGame(){//easy, medium, hard
       loadObjects(25);
     }
     gameState=2;
-  //
+
+    if(difficulty==='instructions'){
+      instructionsText();
+      gameState=3;
+    }
   }
 }//end startGame
   function loadObjects(x){
@@ -107,7 +106,7 @@ function startGame(){//easy, medium, hard
         mouseX>50&&
         mouseX<250&&
         mouseY>600&&
-        mouseY<630){
+        mouseY<700){
           difficulty='easy'
         }
         //if mouse touches medium
@@ -115,7 +114,7 @@ function startGame(){//easy, medium, hard
         mouseX>300&&
         mouseX<500&&
         mouseY>600&&
-        mouseY<630){
+        mouseY<700){
           difficulty='medium'
         }
         //if mouse touches hard
@@ -123,9 +122,17 @@ function startGame(){//easy, medium, hard
         mouseX>550&&
         mouseX<750&&
         mouseY>600&&
-        mouseY<630){
+        mouseY<700){
           difficulty='hard'
         }
+
+    if(mouseIsPressed&&
+      mouseX>550&&
+      mouseX<700&&
+      mouseY>50&&
+      mouseY<210){
+        difficulty='instructions'
+      }
 
 }// end checkDifficulty
 
@@ -138,10 +145,34 @@ text ("GAME OVER", 150, 250);
 
 }
 
+function instructionsText(){
+  if (gameState === 3){
+  textSize(20);
+  fill(255);
+  text("Move the mouse around the screen to move the paddle.", 400, 100);
+  text("Try to get only the green balls, if you touch a red ball your score goes down", 400, 200);
+  text("Once you have removed all the green balls, the game is over", 400, 300);
+  text("Good Luck!", 400, 400);
+
+  fill(50, 100, 150)
+  rect(200, 600, 500, 100);
+  fill(40, 200, 100);
+  textSize(50);
+  text("Back to Main Menu", 450, 675)
+
+  if(mouseIsPressed&&
+    mouseX>500&&
+    mouseX<700&&
+    mouseY>200&&
+    mouseY<210){
+      startGame();
+    }
+}
+}
 function checkRed(){//checks to see if only red balls are left
   for(var i = 0; i < balls.length; i++){
     if(balls[i].getID()% 2 === 0){
-      
+
     }
   }
 }
