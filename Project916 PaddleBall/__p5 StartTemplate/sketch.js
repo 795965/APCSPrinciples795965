@@ -155,17 +155,18 @@ function instructionsText(){
   text("Good Luck!", 400, 400);
 
   fill(50, 100, 150)
-  rect(200, 600, 500, 100);
+  rect(150, 600, 500, 100);
   fill(40, 200, 100);
   textSize(50);
-  text("Back to Main Menu", 450, 675)
+  text("Back to Main Menu", 400, 675)
 
   if(mouseIsPressed&&
     mouseX>500&&
     mouseX<700&&
     mouseY>200&&
     mouseY<210){
-      startGame();
+      gameState = 3;
+      playGame();
     }
 }
 }
