@@ -9,12 +9,12 @@ var difficulty;
 var score =0;
 var gameState = 1;
 var win;
-
+var btnEasy, btnMed, btnHard, btnInstruction, btnRestart, btnBTMI, btnBTME;
 function setup() {
   var cnv = createCanvas(800, 800);
   cnv.position((windowWidth-width)/2, 30);
   background(5, 5, 5);
-
+  newButton();
 } //end setup
 
 //  The draw function is called @ 30 fps
@@ -32,6 +32,13 @@ function draw() {
   }
 
 } //end draw
+
+function newButton(){
+  btnEasy = new Button (50, 610 ,200, 100, color(0,255,0));
+  btnMed = new Button (300, 610, 200, 100, color(0,204,204));
+  btnHard = new Button (550, 610, 200, 100, color(153,0,0));
+  btnInstruction = new Button (550, 75, 210, 100, color(179,179,179));
+}
 
 function playGame(){
   fill (255);
@@ -53,32 +60,20 @@ function startGame(){//easy, medium, hard
   textAlign(CENTER);
   text("Paddle Game", 400, 300); // title text
 
-  fill(0,200,0); //easy button
-  rect(50, 610, 200, 100);
+
+  btnEasy.render();
+  btnMed.render();
+  btnHard.render();
+  btnInstruction.render();
   fill(0,0,0);
   textSize(40);
-  textAlign(CENTER);
   text("Easy", 150, 675);
-
-  fill(0,204,204); //medium button
-  rect(300, 610, 200, 100);
-  fill(0,0,0);
-  textSize(40);
-  textAlign(CENTER);
   text("Medium", 400, 675);
-
-  fill(153,0,0); //hard button
-  rect(550, 610, 200, 100);
-  fill(0,0,0);
-  textSize(40);
-  textAlign(CENTER);
   text("Hard", 650, 675);
 
   fill(179,179,179); //Instructions button
-  rect(550, 75, 210, 100);
   fill(0,90,0);
   textSize(40);
-  textAlign(CENTER);
   text("Instructions", 655, 145);
 
 

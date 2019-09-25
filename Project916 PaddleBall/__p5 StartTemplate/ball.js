@@ -1,5 +1,7 @@
-//Lab 911
-//Ziggy Sheynin
+//  Ziggy Sheynin
+//Project 916 PaddleGame
+////  This is a comment
+//  The setup function function is called once when your program begins
 
 class Ball{
 

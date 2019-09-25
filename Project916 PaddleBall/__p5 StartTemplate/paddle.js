@@ -1,3 +1,8 @@
+//  Ziggy Sheynin
+//Project 916 PaddleGame
+////  This is a comment
+//  The setup function function is called once when your program begins
+
 class Paddle { //constructor to create paddle
   constructor(x, y, w, h){
     this.loc = createVector(x, y);
