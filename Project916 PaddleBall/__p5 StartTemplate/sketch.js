@@ -80,14 +80,7 @@ function startGame(){//easy, medium, hard
   textSize(40);
   textAlign(CENTER);
   text("Instructions", 655, 145);
-  
-  if(mouseIsPressed&&
-    mouseX>550&&
-    mouseX<700&&
-    mouseY>50&&
-    mouseY<210){
-      difficulty='instructions'
-    }
+
 
   //   //checks if user presses easy, medium or hard button
   checkDifficulty();
@@ -95,14 +88,17 @@ function startGame(){//easy, medium, hard
   if(difficulty==='easy'||difficulty==='medium'||difficulty==='hard'||difficulty === 'instructions'){
     if(difficulty==='easy'){
       loadObjects(5);
+        gameState=2;
     }
     if(difficulty==='medium'){
       loadObjects(10);
+        gameState=2;
     }
     if(difficulty==='hard'){
       loadObjects(25);
+        gameState=2;
     }
-    gameState=2;
+
 
     if(difficulty==='instructions'){
       instructionsText();
@@ -144,8 +140,13 @@ function startGame(){//easy, medium, hard
           difficulty='hard'
         }
 
-
-
+        if(mouseIsPressed&&
+          mouseX>550&&
+          mouseX<700&&
+          mouseY>50&&
+          mouseY<210){
+            difficulty='instructions'
+          }
 }// end checkDifficulty
 
 
@@ -161,7 +162,34 @@ if (win === 'yes'){
     fill (255, 10, 10);
     text ("YOU LOSE", 350, 250);
   }
-} //end og endgame
+  fill(50, 100, 150) //Restart
+  rect(50, 450, 250, 75);
+  fill(40, 200, 100);
+  textSize(30);
+  text("Restart", 175, 500)
+
+  if(mouseIsPressed&&
+    mouseX>50&&
+    mouseX<300&&
+    mouseY>450&&
+    mouseY<525){
+      gameState = 1;
+      clearEverything();
+    }
+    fill(50, 100, 150) //Back to Main Menu
+    rect(500, 450, 270, 75);
+    fill(40, 200, 100);
+    textSize(30);
+    text("Main Menu", 650, 500)
+
+    if(mouseIsPressed&&
+      mouseX>500&&
+      mouseX<650&&
+      mouseY>450&&
+      mouseY<525){
+        clearEverything();
+      }
+} //end of endgame
 
 function instructionsText(){
 
@@ -172,20 +200,22 @@ function instructionsText(){
   text("Once you have removed all the green balls, the game is over", 400, 300);
   text("Good Luck!", 400, 400);
 
-  fill(50, 100, 150)
-  rect(150, 600, 500, 100);
+  fill(50, 100, 150) //back to main menu button
+  rect(150, 450, 500, 75);
   fill(40, 200, 100);
   textSize(50);
-  text("Back to Main Menu", 400, 675)
+  text("Back to Main Menu", 400, 500)
 
-
+if(gameState === 3){
   if(mouseIsPressed&&
     mouseX>150&&
     mouseX<650&&
-    mouseY>600&&
-    mouseY<700){
-      gameState = 1;
+    mouseY>450&&
+    mouseY<525){
+      clearEverything();
     }
+  }
+
 
 } //end of instructionsText
 
@@ -206,3 +236,8 @@ numRed++;     }
     return true;
   }
 }//end checkRed
+
+function clearEverything(){
+  gameState =1;
+  score = 0;
+}
