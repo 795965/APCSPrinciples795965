@@ -38,6 +38,9 @@ function newButton(){
   btnMed = new Button (300, 610, 200, 100, color(0,204,204));
   btnHard = new Button (550, 610, 200, 100, color(153,0,0));
   btnInstruction = new Button (550, 75, 210, 100, color(179,179,179));
+  btnBTMI = new Button (150, 150, 500, 100, color(255));
+  btnReplay = new Button (66, 100, 300, 100, color (255));
+  btnBTME = new Button (432, 100, 300, 100, color(255));
 }
 
 function playGame(){
@@ -177,13 +180,9 @@ if (win === 'yes'){
     textSize(30);
     text("Main Menu", 650, 500)
 
-    if(mouseIsPressed&&
-      mouseX>500&&
-      mouseX<650&&
-      mouseY>450&&
-      mouseY<525){
-        clearEverything();
-      }
+    if (btnBTME.isClicked()){
+  gameState = 1;
+}
 } //end of endgame
 
 function instructionsText(){
@@ -210,8 +209,6 @@ if(gameState === 3){
       clearEverything();
     }
   }
-
-
 } //end of instructionsText
 
 function runObjects(){
