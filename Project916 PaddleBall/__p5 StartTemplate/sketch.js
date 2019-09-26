@@ -38,9 +38,9 @@ function newButton(){
   btnMed = new Button (300, 610, 200, 100, color(0,204,204));
   btnHard = new Button (550, 610, 200, 100, color(153,0,0));
   btnInstruction = new Button (550, 75, 210, 100, color(179,179,179));
-  btnBTMI = new Button (150, 150, 500, 100, color(255));
-  btnReplay = new Button (66, 100, 300, 100, color (255));
-  btnBTME = new Button (432, 100, 300, 100, color(255));
+  btnBTMI = new Button (150, 450, 500, 75, color(255));
+  btnReplay = new Button (50, 450, 250, 75, color (255));
+  btnBTME = new Button (500, 450, 270, 75, color(255));
 }
 
 function playGame(){
@@ -149,13 +149,13 @@ function startGame(){//easy, medium, hard
 
 
 
-function endGame(){ //
-if (win === 'yes'){
+function endGame(){ //function for game over
+if (win === 'yes'){ //if the score is greater than zero, you win
     textSize(80);
     fill (10, 255, 50);
     text ("YOU WIN", 350, 200);
     text ("SCORE:" + score, 350, 325);
-  }else if (win === 'no'){
+  }else if (win === 'no'){ //if you get a red ball first or your score goes below zero, you lose
     textSize(80);
     fill (255, 10, 10);
     text ("YOU LOSE", 350, 250);
@@ -175,13 +175,13 @@ if (win === 'yes'){
       clearEverything();
     }
     fill(50, 100, 150) //Back to Main Menu
-    rect(500, 450, 270, 75);
+    btnBTME.render();
     fill(40, 200, 100);
     textSize(30);
     text("Main Menu", 650, 500)
-
     if (btnBTME.isClicked()){
-  gameState = 1;
+      gameState = 1;
+      clearEverything();
 }
 } //end of endgame
 
@@ -195,20 +195,25 @@ function instructionsText(){
   text("Good Luck!", 400, 400);
 
   fill(50, 100, 150) //back to main menu button
-  rect(150, 450, 500, 75);
+//  rect(150, 450, 500, 75);
+btnBTMI.render();
   fill(40, 200, 100);
   textSize(50);
   text("Back to Main Menu", 400, 500)
 
-if(gameState === 3){
-  if(mouseIsPressed&&
-    mouseX>150&&
-    mouseX<650&&
-    mouseY>450&&
-    mouseY<525){
-      clearEverything();
-    }
+  if(btnBTMI.isClicked()=== true){
+    gameState = 1;
+    clearEverything();
   }
+// if(gameState === 3){
+//   if(mouseIsPressed&&
+//     mouseX>150&&
+//     mouseX<650&&
+//     mouseY>450&&
+//     mouseY<525){
+//       clearEverything();
+//     }
+  //}
 } //end of instructionsText
 
 function runObjects(){
@@ -229,7 +234,7 @@ numRed++;     }
   }
 }//end checkRed
 
-function clearEverything(){
+function clearEverything(){ //returns to origianl state
   gameState =1;
   score = 0;
 }
