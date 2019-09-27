@@ -86,7 +86,7 @@ function startGame(){//easy, medium, hard
   //   //checks if user presses easy, medium or hard button
   checkDifficulty();
   //moves to next splash screen
-  if(difficulty==='easy'||difficulty==='medium'||difficulty==='hard'||difficulty === 'instructions'){
+  if(difficulty==='easy'||difficulty==='medium'||difficulty==='hard'||difficulty === 'instructions'|| difficulty=== 'startOver'){
     if(difficulty==='easy'){
       loadObjects(5);
         gameState=2;
@@ -105,6 +105,8 @@ function startGame(){//easy, medium, hard
       instructionsText();
       gameState=3;
     }
+
+
   }
 }//end startGame
 
@@ -181,10 +183,11 @@ if (win === 'yes'){ //if the score is greater than zero, you win
     btnBTME.render();
     fill(40, 200, 100);
     textSize(20);
-    text("Press reload to go back to main menu", 600, 500)
+    text("Back to Main Menu", 600, 500)
     if (btnBTME.isClicked()){
       clear();
       gameState =1;
+      difficulty = 'startOver'
       clearEverything();
 }
 } //end of endgame
@@ -203,11 +206,12 @@ function instructionsText(){
 btnBTMI.render();
   fill(40, 200, 100);
   textSize(20);
-  text("Press reload to go back to main menu", 400, 500)
+  text("Back to Main Menu", 400, 500)
 
   if(btnBTMI.isClicked()=== true){
     gameState = 1;
     clearEverything();
+    difficulty = 'clearEverything';
   }
 // if(gameState === 3){
 //   if(mouseIsPressed&&
