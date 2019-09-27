@@ -27,6 +27,9 @@ function draw() {
   }
   else if (gameState === 3){
     instructionsText(); //game over screen
+    if(btnBTMI.isClicked() === true){
+      gameState = 1;
+    }
   }else if (gameState === 4){
     endGame(); //game over screen
   }
@@ -40,7 +43,7 @@ function newButton(){
   btnInstruction = new Button (550, 75, 210, 100, color(179,179,179));
   btnBTMI = new Button (150, 450, 500, 75, color(255));
   btnReplay = new Button (50, 450, 250, 75, color (255));
-  btnBTME = new Button (500, 450, 270, 75, color(255));
+  btnBTME = new Button (400, 450, 370, 75, color(255));
 }
 
 function playGame(){
@@ -177,10 +180,11 @@ if (win === 'yes'){ //if the score is greater than zero, you win
     fill(50, 100, 150) //Back to Main Menu
     btnBTME.render();
     fill(40, 200, 100);
-    textSize(30);
-    text("Main Menu", 650, 500)
+    textSize(20);
+    text("Press reload to go back to main menu", 600, 500)
     if (btnBTME.isClicked()){
-      gameState = 1;
+      clear();
+      gameState =1;
       clearEverything();
 }
 } //end of endgame
@@ -198,8 +202,8 @@ function instructionsText(){
 //  rect(150, 450, 500, 75);
 btnBTMI.render();
   fill(40, 200, 100);
-  textSize(50);
-  text("Back to Main Menu", 400, 500)
+  textSize(20);
+  text("Press reload to go back to main menu", 400, 500)
 
   if(btnBTMI.isClicked()=== true){
     gameState = 1;
