@@ -5,14 +5,12 @@
 **
 */
 
-
 //  Global variables
 // Declare squares[] as a global variable
-var squares[];
-
-
+var squares = [];
+var id;
 // put setup code here
-function setup() {
+function setup(){
   var cnv = createCanvas(800, 800);
   cnv.position((windowWidth-width)/2, 30);
   background(235);
@@ -21,24 +19,23 @@ function setup() {
 
   loadSquares();
   //  traverse array and run each square
-
+  for(var i = 0; i < squares.length; i++){
+    squares[i].render();
+  }
 }
-
 
 
 function loadSquares(){
-  //  create a square object and push it into the squares array
-var square1 = new Square (100, 100, x+100, y+100, color());
-
-  var rowNum = 0;
-  for(var i = 0; i < 64; i++){
-  //get  location properties
-    var x =     //  Choose x in terms of i
-    var y =     //  Choose y in terms of i
-    //Create your location vector
-    var loc = createVector(x, y);
-
+  for(var i = 0; i < 8; i++){
+    for (var j = 0; j < 8; j++){
+      squares[i] = new Square(i * 100, j*100, 100, 100, i);
+    // if(id%2 === 0){
+    //   this.clr = color(179, 0, 134);
+    // }else {
+    //   this.clr = color(0, 85, 128);
+    // }
+  }
+  }
+}
   //  create a loop that will push 64 squares into an array
   //  calculate the x and y position interms of the loop control variable
-
-}
