@@ -10,8 +10,7 @@ function setup() {
   background(5, 5, 5);
   fill(200, 30, 150);
 
-  console.log(list);
-  list.bubbleSort();
+
 }
 
 //  The draw function is called @ 30 fps
@@ -19,29 +18,20 @@ function draw() {
 
 }
 
-function swap(list, a, b){
-  var temp = list[a];
-  list[a] = list[b];
-  list[b] = temp;
+function bubbleSort(list){
+  for(var j = list.length; j > 0 ; j --){
+for (var i = 0 ; i < list.length; i ++){
 
+
+if (list[i+1] < list [i]){
+  var temp = list[i];
+  list[i] = list[i+1];
+  list[i+1] = temp;
 }
 
-function bubbleSort(list){
-  // for all elements of list
-  //     if list[i] > list[i+1]
-  //        swap(list, i, i+1)
-  //     end if
-  //  end for
-  //  return list
-for(var j = list.length-1; j < 0; j--){
-  for(var i = 0; i < list.length; i++){
-
-      if(list[i] > list[i+1]){
-        swap(list, i, i+1);
-      }
-    }
   }
 
-  console.log(list);
+}
+console.log(list);
 
 }
