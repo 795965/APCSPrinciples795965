@@ -8,33 +8,24 @@
 **  Sept. 11, 2018
 */
   class Square{
-    //  Add parameters to your constructor function
-    //  Add instance variables to your constructor Function
-    //What does a square need to know about itself??
-    constructor(w, h, x, y, id){
-      this.w = 0;
-      this.h = 0;
-      this.x = 100;
-      this.y = 100;
-      //this.clr = color(179, 0, 134);
-      this.id = id;
-    } //  End of Square constructor function
+      // Add parameters to your constructor function
+      // Add instance variables to your constructor Function
+      // What does a square need to know about itself??
+ constructor(x,y,w,h,c){
+   this.loc=createVector(x,y);
+   this.w=w;
+   this.h=h;
+   this.clr= c;
+ } //  End of Square constructor function
 
-    run(){
-      this.checkID();
-      this.render();
-    }
+run(){
+ this.render();
+ this.update();
 
-    render(){
-  //  fill();
-      rect(this.w, this.h, this.x, this.y);
-    }
+}
+render(){
+ fill(this.clr);
+ rect(this.loc.x,this.loc.y,this.w,this.h);
+}
 
-    checkID(){
-      if(id%2 === 0){
-        this.clr = color(179, 0, 134);
-      }else if(id%2 === 1){
-        this.clr = color(0, 85, 128);
-      }
-    }
-  }// end of Square class
+}// end of Square class

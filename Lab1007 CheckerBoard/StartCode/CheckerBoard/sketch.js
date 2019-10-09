@@ -8,7 +8,6 @@
 //  Global variables
 // Declare squares[] as a global variable
 var squares = [];
-var id;
 // put setup code here
 function setup(){
   var cnv = createCanvas(800, 800);
@@ -18,24 +17,33 @@ function setup(){
   // array of square objects and call the function
 
   loadSquares();
+    for(var i=0;i<squares.length;i++){
+      squares[i].render();
+    }
+}
   //  traverse array and run each square
-  for(var i = 0; i < squares.length; i++){
-    squares[i].render();
+  function loadSquares(){
+    for (var i=0; i<8; i++){
+      for(var x=0; x<8; x++){ //nested for loop
+        if(i%2===0){ //Is the number even?
+          if(x%2===0){
+            var shade=color(51, 102, 255); //if the number is even, blue color
+          }
+          if(x%2!==0){ //Is the number odd?
+            var shade=color(77, 0, 102); //if the number is odd, purple color
+          }
+        }
+        if(i%2!==0){ //fixes for the rows
+          if(x%2!==0){
+            var shade=color(51, 102, 255);
+          }
+          if(x%2===0){
+            var shade=color(77, 0, 102);
+          }
+        }
+        squares[x+(8*i)]= new Square(100*x,100*i,100,100, shade); //loads array with square objects
+      }
+    }
   }
-}
-
-
-function loadSquares(){
-  for(var i = 0; i < 8; i++){
-    for (var j = 0; j < 8; j++){
-      squares[i] = new Square(i * 100, j*100, 100, 100, i);
-    // if(id%2 === 0){
-    //   this.clr = color(179, 0, 134);
-    // }else {
-    //   this.clr = color(0, 85, 128);
-    // }
-  }
-  }
-}
   //  create a loop that will push 64 squares into an array
   //  calculate the x and y position interms of the loop control variable
