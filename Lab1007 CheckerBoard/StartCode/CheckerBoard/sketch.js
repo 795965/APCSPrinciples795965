@@ -27,18 +27,18 @@ function setup(){
       for(var x=0; x<8; x++){ //nested for loop
         if(i%2===0){ //Is the number even?
           if(x%2===0){
-            var shade=color(51, 102, 255); //if the number is even, blue color
+            var shade=color(235, 52, 107); //if the number is even, reddish color
           }
           if(x%2!==0){ //Is the number odd?
-            var shade=color(77, 0, 102); //if the number is odd, purple color
+            var shade=color(0); //if the number is odd, black color
           }
         }
         if(i%2!==0){ //fixes for the rows
           if(x%2!==0){
-            var shade=color(51, 102, 255);
+            var shade=color(235, 52, 107);
           }
           if(x%2===0){
-            var shade=color(77, 0, 102);
+            var shade=color(0);
           }
         }
         squares[x+(8*i)]= new Square(100*x,100*i,100,100, shade); //loads array with square objects
