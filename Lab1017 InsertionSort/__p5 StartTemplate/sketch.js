@@ -23,24 +23,36 @@ function draw() {
 
 }
 
+
+function findMedian(list){
+  if(list.length % 2 === 0){ //if the array is even
+    var half = list.length / 2;
+    var twoMedian = list[half] + list[half+1];
+    var medianEven = twoMedian/2;
+    console.log(medianEven);
+  }
+  else if(list.length % 2 === 1){//is the aaray is odd
+      var half = list.length /2;
+      var medianOdd = list[half];
+      console.log(medianOdd);
+  }
+}
+
+
 function insertionSort(list){
-
-  for(var i = 1; i > list.length ; i++){
-      for (var j = i-1; j < list.length-1; j++){
-          while(j >= 0 && list[j] > temp){
-            list[j+1] = list[j];
-            j = j-1;
+  for (var i = 1; i < list.length; i++){
+              for (var j = i; j > 0; j--){
+                  if (list[j] < list[j-1]) { // if the current value is less, swap
+                      swap(list, j , j-1);
+                  }
+              }
           }
-          list[j+1] = temp;
-        // if (list[i+1] < list [i]){ //swapping routine
-        //     var temp = list[i];
-        //     list[i] = list[i+1];
-        //     list[i+1] = temp;
-        //   }
 
+  console.log(list);
+}
 
-        }
-      }
-      console.log(list);
-
+function swap(list, a, b){ //swapping code
+  var temp = list[a];
+  list[a] = list[b];
+  list[b] = temp;
 }
