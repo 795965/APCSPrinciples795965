@@ -1,5 +1,5 @@
 //  Ziggy Sheynin
-// 	Lab 1017 Insertion Sort
+// 	Lab 1018 Selection Sort
 //  This is a comment
 //  The setup function function is called once when your program begins
 
@@ -20,7 +20,6 @@ function setup() {
 
 //  The draw function is called @ 30 fps
 function draw() {
-
 }
 
 
@@ -39,14 +38,19 @@ function findMedian(list){
 }
 
 
-function insertionSort(list){
-  for (var i = 1; i < list.length; i++){
-              for (var j = i; j > 0; j--){
-                  if (list[j] < list[j-1]) { // if the current value is less, swap
-                      swap(list, j , j-1);
-                  }
-              }
-          }
+function selectionSort(list){
+  for (var i  = 0; i <list.length -1; i++){ //keeps track of length of sorted array
+           var small = i; //int to find the smallest unsorted values
+           for (var j = i+1; j <list.length; j++){ //traverses nums
+
+               if (list[j] < list[small]){ // if the value = small
+                   small = j;
+               }
+
+           }
+
+           swap(list, i ,small);
+       }
 
   console.log(list);
 }
