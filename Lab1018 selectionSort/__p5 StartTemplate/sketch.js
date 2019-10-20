@@ -9,7 +9,7 @@ var list = [];
 function setup() {
   var cnv = createCanvas(800, 800);
   cnv.position((windowWidth-width)/2, 30);
-  background(5, 5, 5);
+  background(173, 23, 30);
   fill(200, 30, 150);
 
   for(var x = 0; x < 10,000; x++){ //loads list with random integers from 1 to 100
