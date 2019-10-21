@@ -3,8 +3,7 @@
 //  This is a comment
 //  The setup function function is called once when your program begins
 
-var list = [];
-
+var list = []; //initializes list
 
 function setup() {
   var cnv = createCanvas(800, 800);
@@ -12,7 +11,7 @@ function setup() {
   background(173, 23, 30);
   fill(200, 30, 150);
 
-  for(var x = 0; x < 10,000; x++){ //loads list with random integers from 1 to 100
+  for(var x = 0; x < 10; x++){ //loads list with random integers from 1 to 100
     list[x] = Math.floor(random(1, 100));
   }
 
@@ -46,14 +45,14 @@ function selectionSort(list){
                if (list[j] < list[small]){ // if the value = small
                    small = j;
                }
-
            }
-
            swap(list, i ,small);
        }
 
   console.log(list);
 }
+
+
 
 function swap(list, a, b){ //swapping code
   var temp = list[a];

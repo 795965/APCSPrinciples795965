@@ -24,21 +24,15 @@ function draw() {
 }
 
 function bubbleSort(list){
-
-
   for(var j = list.length; j > 0 ; j --){
-for (var i = 0 ; i < list.length; i ++){
+      for (var i = 0 ; i < list.length; i ++){
 
-
-if (list[i+1] < list [i]){
-  var temp = list[i];
-  list[i] = list[i+1];
-  list[i+1] = temp;
-}
-
-  }
-
-}
-console.log(list);
-
-}
+          if (list[i+1] < list [i]){
+            var temp = list[i];
+            list[i] = list[i+1];
+            list[i+1] = temp;
+          }
+        }
+      }
+      console.log(list);
+    }
