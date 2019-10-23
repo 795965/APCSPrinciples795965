@@ -23,8 +23,9 @@ function draw() {
 }
 
 function loadBars(){
-  for (var x = 0; x < 80; x++){
-    bars[x] = new Bars (10+x, 10+x, 20, random(0, 30), color(255));
-
-  }
+   var w = random(1,800);
+  for (var i=0; i<30; i++){
+    var j=int(random(i,30));
+      bars[i]= new Bars(i, 30*i,800-(30*i), i, random(1,400), color(20, 45, 153));
+ }
 }
