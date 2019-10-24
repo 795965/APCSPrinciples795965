@@ -12,20 +12,22 @@ function setup() {
 
   loadBars();
     for(var i=0;i<bars.length;i++){
-      bars[i].render();
+      bars[i].run();
     }
 
 }
 
 //  The draw function is called @ 30 fps
 function draw() {
-
+  //frameRate(10);
+  for(var i=0; i<bars.length; i++){
+     bars[i].run();
+   }
 }
 
 function loadBars(){
-   var w = random(1,800);
-  for (var i=0; i<30; i++){
-    var j=int(random(i,30));
-      bars[i]= new Bars(i, 30*i,800-(30*i), i, random(1,400), color(20, 45, 153));
+  for (var i=0; i<40; i++){
+    var w = int(random(1,40));
+    bars[i]= new Bars(25*i,800-(25*w),25,(25*w), color(130, 0, 130));
  }
 }
