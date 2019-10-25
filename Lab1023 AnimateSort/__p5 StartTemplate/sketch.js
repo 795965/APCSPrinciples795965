@@ -12,20 +12,17 @@ function setup() {
   fill(200, 30, 150);
 
   loadBars();
+  runBars();
+  shuffle(bars, true);
 
 }
 
 //  The draw function is called @ 30 fps
 function draw() {
-  for(var i=0; i<bars.length; i++){
-     bars[i].run();
-     SelectSort(bars);
-   }
-   frameRate(10);
 
 }
 
-function loadBars(){
+function loadBars(){ //function to create bars
   for (var i=0; i<40; i++){
     var barHeight = Math.floor(random(1,height));
     var barWidth = (width/40);
@@ -33,17 +30,24 @@ function loadBars(){
  }
 }
 
-function update(){
+function runBars(){ //actually puts bars on the screen
+  for(var i = 0; i < bars.length; i++){
+    bars[i].run();
+  }
+}
+
+function update(){ //to re-draw them-- doesn't work
   for(var i = 0; i < bars.length; i++){
     bars[i].set(i);
   }
-  // background(235);
  for(var i=0; i<bars.length; i++){
    bars[i].run();
  }
 
 }
-function SelectSort(){
+
+
+function SelectSort(){ //sorting routine
  for (var i = 0; i <bars.length -1; i++){ //keeps track of length of sorted array
       var small = i; //var to find the smallest unsorted values
       for (var j = i+1; j <bars.length; j++){ //traverses nums
@@ -54,10 +58,14 @@ function SelectSort(){
       swap(bars, i, small);
       update();
   }
+  background(5, 5, 5);
+     frameRate(1);
+     loadBars();
+
 }
 
-function swap(list,a,b){
-   var temp=list[a];
-   list[a]=list[b];
-   list[b]=temp;
-   }
+function swap(bars,a,b){ //swapping routine
+  var temp = bars[a].loc.x;
+  bars[a].loc.x = bars[b].loc.x;
+  bars[b].loc.x = temp;
+}
