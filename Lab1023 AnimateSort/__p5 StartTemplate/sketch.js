@@ -3,7 +3,7 @@
 //  This is a comment
 //  The setup function function is called once when your program begins
 var bars = [];
-var barWidth, barHeight;
+var numBars, barWidth;
 
 function setup() {
   var cnv = createCanvas(800, 800);
@@ -11,15 +11,20 @@ function setup() {
   background(5, 5, 5);
   fill(200, 30, 150);
 
-  loadBars();
+  barWidth = 10;
+  numBars = width/barWidth;
+
+  loadBars(numBars);
   runBars();
   shuffle(bars, true);
+  selectSort();
+  }
 
-}
 
 //  The draw function is called @ 30 fps
 function draw() {
-
+  //selectSort();
+  //bubbleSort();
 }
 
 function loadBars(){ //function to create bars
@@ -36,36 +41,25 @@ function runBars(){ //actually puts bars on the screen
   }
 }
 
-function update(){ //to re-draw them-- doesn't work
-  for(var i = 0; i < bars.length; i++){
-    bars[i].set(i);
-  }
- for(var i=0; i<bars.length; i++){
-   bars[i].run();
- }
-
-}
-
-
-function SelectSort(){ //sorting routine
- for (var i = 0; i <bars.length -1; i++){ //keeps track of length of sorted array
-      var small = i; //var to find the smallest unsorted values
-      for (var j = i+1; j <bars.length; j++){ //traverses nums
-              if (bars[j] < bars[small]){ // if the value = small
-                  small = j;
-              }
-      }
-      swap(bars, i, small);
-      update();
-  }
-  background(5, 5, 5);
-     frameRate(1);
-     loadBars();
-
-}
 
 function swap(bars,a,b){ //swapping routine
   var temp = bars[a].loc.x;
   bars[a].loc.x = bars[b].loc.x;
   bars[b].loc.x = temp;
+}
+
+
+function selectSort(){ //sorting routine
+ for (var i = 0; i <bars.length -1; i++){ //keeps track of length of sorted array
+      var small = i; //var to find the smallest unsorted values
+      for (var j = i+1; j <bars.length; j++){ //traverses nums
+              if (bars[j].h < bars[small].h){ // if the value = small
+                  small = j;
+              }
+      }
+      swap(bars, i, small);
+  }
+  background(5, 5, 5);
+  frameRate(3);
+  runBars();
 }

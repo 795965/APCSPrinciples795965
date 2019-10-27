@@ -13,7 +13,7 @@ class Bars{
 
  run(){
   this.render();
-  this.update();
+  //this.update();
  }
 
  render(){
@@ -22,9 +22,6 @@ class Bars{
  }
 
 
- update(){
-
-    }
 
 getHeight(){
   return this.h;
