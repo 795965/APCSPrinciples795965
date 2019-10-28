@@ -23,7 +23,7 @@ function setup() {
 
 //  The draw function is called @ 30 fps
 function draw() {
-  //selectSort();
+  selectSort(bars);
   //bubbleSort();
 }
 
@@ -33,6 +33,16 @@ function loadBars(){ //function to create bars
     var barWidth = (width/40);
     bars[i]= new Bars(barWidth*i,height-barHeight,barWidth,barHeight, color(130, 0, 130));
  }
+}
+
+function  update(){
+  for(var i=0; i<bars.length; i++){
+    bars[i].set(i);
+  }
+  background(0);
+  for (var i =0; i<bars.length; i++){
+    bars[i].run();
+  }
 }
 
 function runBars(){ //actually puts bars on the screen
@@ -53,11 +63,12 @@ function selectSort(){ //sorting routine
  for (var i = 0; i <bars.length -1; i++){ //keeps track of length of sorted array
       var small = i; //var to find the smallest unsorted values
       for (var j = i+1; j <bars.length; j++){ //traverses nums
-              if (bars[j].h < bars[small].h){ // if the value = small
-                  small = j;
+              if (bars[j].getHeight() > bars[small].getHeight()){ // if the value = small
+                  j = small;
               }
       }
       swap(bars, i, small);
+      update();
   }
   background(5, 5, 5);
   frameRate(3);
