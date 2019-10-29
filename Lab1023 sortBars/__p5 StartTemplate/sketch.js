@@ -3,7 +3,7 @@
 //  This is a comment
 //  The setup function function is called once when your program begins
 var bars=[];
-var barWidth = 25;
+var barWidth = 5;
 
 //put setup code here
 function setup(){
@@ -45,8 +45,8 @@ function bubbleSort(){ //sorting routine
 
 
 function loadBars(){ //puts bars into array
-  for (var x=0; x<40; x++){
-    var w=int(random(1,40));
+  for (var x=0; x<800/5; x++){
+    var w=int(random(1,800/5));
     bars[x]= new Bar(barWidth*x,800-(barWidth*w),barWidth,(barWidth*w))
   }
 }
