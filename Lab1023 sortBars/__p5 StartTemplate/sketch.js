@@ -47,7 +47,7 @@ function bubbleSort(){ //sorting routine
 function loadBars(){ //puts bars into array
   for (var x=0; x<800/5; x++){
     var w=int(random(1,800/5));
-    bars[x]= new Bar(barWidth*x,800-(barWidth*w),barWidth,(barWidth*w))
+    bars[x]= new Bar(barWidth*x,800-(barWidth*w),barWidth,(barWidth*w), color(34, 56, 120))
   }
 }
 
