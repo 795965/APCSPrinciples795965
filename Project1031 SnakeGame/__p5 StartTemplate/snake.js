@@ -23,4 +23,8 @@ class Snake{
     //then do the same for each segment of the body in a for-loop grow function
     // add a segment to the body
   }//end render
+
+  tangled(){
+  //  if()
+  }
 } //++++++++++++++++ End Snake
