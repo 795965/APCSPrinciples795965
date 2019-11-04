@@ -3,7 +3,8 @@
 //  This is a comment
 //  The setup function function is called once when your program begins
 
-var w, header_height, snake, score;
+var w, header_height, snake, score, food;
+var bodySegments = [];
 function setup() {
   var cnv = createCanvas(800, 800);
   cnv.position((windowWidth-width)/2, 30);
@@ -43,7 +44,9 @@ function newGame(){
   //create the snake object in a random cell near the middle, create the
   //food object, make sure it’s not overlapping the snake.
   //Put it somewhere that’s not close to the middle.
-  snake = new Snake(random(0, 800), random(0, 800), 10, 10, color(50));
+  snake = new Snake(random(0, 800),random(0, 800), 50, 50, head, body, color(23, 23, 170));
+  food = new Food(random(0, 800), random(0,800), color(0, 200, 200));
+
 
 }// end newGame
 

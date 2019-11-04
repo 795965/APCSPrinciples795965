@@ -17,7 +17,8 @@ class Food{
 
   render(){
     fill(this.clr);
-  
+    rect(this.loc.x, this.loc.y, 10, 10);
+
   }//end render
 
 }//++++++++++++++++++++ end food
