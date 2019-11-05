@@ -3,76 +3,73 @@
 //  This is a comment
 //  The setup function function is called once when your program begins
 
-var w, header_height, snake, score, food;
-var bodySegments = [];
+
+// function run(){
+//   snake.update();
+//   snake.render();
+// }//end run
+//
+
+
+var cubeWidth, food, direction;
+var snake = [];
+var column;
+var row;
+var snakeHead;
+var gameOver = 0;
+
 function setup() {
   var cnv = createCanvas(800, 800);
   cnv.position((windowWidth-width)/2, 30);
-  background(150, 40, 70);
-  fill(200, 30, 150);
+  background(179, 189, 179);
+  fill(200, 100, 150);
+  cubeWidth = 20;
+  column = width / cubeWidth;
+  row = height / cubeWidth;
+  snakeHead = new Snake(column, 600, color(170, 30, 100));
+  food = new Food(cubeWidth * int(random(0,800/cubeWidth)),cubeWidth * int(random(0,800/cubeWidth)), color(30));
+}// end set up
 
-   w = cnv.width/height;
-  header_height = 800;
-  newGame();
-}
+function loadObjects(n){
+  for(i = 0; i < n; i++){
+
+}//end loadObjects
 
 //  The draw function is called @ 30 fps
-function draw() {
-  snake.render();
-//  food.run();
-  if(checkTangled === true){
-    newGame();
+function draw(){
+  frameRate(10);
+  if(gameOver === 0){
+    background(5,5,5);
+    snakeHead.run();
+    food.run();
   }
-  if(getFood === true){
-    startNewRound();
-  }
+}//end draw
 
-//draw the score and header w/in y=0, and header_height area
-
-} // end draw
-
-function checkTangled(){
-  return snake.tangled();
-}//end checkTangled
-
-function startNewRound(){
-
-}// end startNewRound
-
-function newGame(){
-  score = 0;
-  //create the snake object in a random cell near the middle, create the
-  //food object, make sure it’s not overlapping the snake.
-  //Put it somewhere that’s not close to the middle.
-  snake = new Snake(random(0, 800),random(0, 800), 50, 50, head, body, color(23, 23, 170));
-  food = new Food(random(0, 800), random(0,800), color(0, 200, 200));
-
-
-}// end newGame
-
-function keyPressed(){
-  if(keyCode === UP_ARROW){
-    //MOVE SNAKE ONE SQUARE UP
-  }
-  if(keyCode === DOWN_ARROW){
-    //MOVE SNAKE ONE SQUARE DOWN
-  }
-  if(keyCode === LEFT_ARROW){
-    //MOVE SNAKE ONE SQUARE LEFT
-  }
-  if(keyCode === RIGHT_ARROW){
-    //MOVE SNAKE ONE SQUARE RIGHT
+  if(gameOver === 1){
+    fill(200, 30, 30);
+    textSize(90);
+    text("Game Over", 100, 100);
   }
 
-}//end keyPressed
+  function getFood(){
+  //need to compute row,col of snake.loc
+  //and food.loc,
+  //return (snake.row === food.row && snake.col === food.col)
+  }//end getFood
 
-function run(){
-  snake.update();
-  snake.render();
-}//end run
+  function newGame(){
+    score = 0;
+    //create the snake object in a random cell near the middle, create the
+    //food object, make sure it’s not overlapping the snake.
+    //Put it somewhere that’s not close to the middle.
 
-function getFood(){
-//need to compute row,col of snake.loc
-//and food.loc,
-//return (snake.row === food.row && snake.col === food.col)
-}//end getFood
+  }// end newGame
+
+  function startNewRound(){
+
+  }// end startNewRound
+
+  function checkTangled(){
+    //return snake.tangled();
+  }//end checkTangled
+}
