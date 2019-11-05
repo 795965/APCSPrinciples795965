@@ -11,12 +11,14 @@
 //
 
 
-var cubeWidth, food, direction;
+var cubeWidth
+var food;
+var direction;
 var snake = [];
 var column;
 var row;
 var snakeHead;
-var gameOver = 0;
+var gameOver;
 
 function setup() {
   var cnv = createCanvas(800, 800);

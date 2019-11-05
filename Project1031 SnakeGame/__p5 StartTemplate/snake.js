@@ -24,28 +24,28 @@ class Snake{
   update(){
     if(keyCode === RIGHT_ARROW){
       if(direction === 2){
-        gameOver = 1;
+        // gameOver = 1;
       }
       this.loc.x = this.loc.x + this.w;
       direction = 1;
     }
     if(keyCode === LEFT_ARROW){
       if(direction === 1){
-        gameOver = 1;
+        // gameOver = 1;
       }
       this.loc.x = this.loc.x - this.w;
       direction = 2;
     }
     if(keyCode === UP_ARROW){
       if(direction === 4){
-        gameOver = 1;
+        // gameOver = 1;
       }
       this.loc.y = this.loc.y - this.w;
       direction = 3;
     }
     if(keyCode === DOWN_ARROW){
       if(direction === 3){
-        gameOver = 1;
+        // gameOver = 1;
       }
       this.loc.y = this.loc.y + this.w;
       direction = 4;
