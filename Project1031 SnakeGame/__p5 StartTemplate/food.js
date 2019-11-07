@@ -7,6 +7,7 @@ class Food{
   constructor(x, y, c){
       this.loc = createVector(x,y);
       this.clr = c;
+      this.w = 30;
       //this.w = cubeWidth;
     }//end constructor
 
