@@ -3,6 +3,7 @@
 //  This is a comment
 //  The setup function function is called once when your program begins
 
+//figure shit out
 class Snake{
   constructor(x, y,w, c){
     this.head=createVector(x,y);
