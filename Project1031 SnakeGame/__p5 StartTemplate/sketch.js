@@ -42,22 +42,20 @@ function startGame(){
 //change look of this
   textSize(80);
 
-  fill(90, 255, 170);
+  fill(98,78,200);
   textAlign(RIGHT);
-  textFont('Helvetica')
-  text ("Snake", 400, 200); //title
+  textFont('Times New Roman')
+  text ("Snake Game", 600, 200); //title
   textAlign(CENTER);
-  text ("Game", 400, 300);
 
   btnEasy.render(); //draws buttons
   btnMed.render();
   btnHard.render();
 
-  textSize (60); //text for buttons
+  textSize (45); //text for buttons
   fill(255);
   text ("EASY", 55, 525, 200, 200);
   text ("HARD", 560, 525, 200, 200);
-  textSize(45);
   text ("MEDIUM", 305, 530, 200, 200);
 
     checkDifficulty(); // checks which difficulty is chosen
