@@ -78,11 +78,11 @@ function playGame(){
 }
 
 function loadObjects(n){
-    snake = new Snake (Math.floor(random(10, 26)*30),Math.floor(random (10, 26)*30),30, color(200, 200, 68));
-  for (var j = 0; j < n; j++){
-    food[j] = new Food (Math.floor(random(0, 26)*30), Math.floor(random (0, 26)*30), color(200, 30, 170));
-    }
-}
+  snake = new Snake (Math.floor(Math.random()*26)*30,Math.floor(Math.random()*26)*30,30, color(227, 69, 7));
+    for (var j = 0; j < n; j++){
+      food[j] = new Food (Math.floor(Math.random()*26)*30,Math.floor(Math.random()*26)*30, color(70));
+      }
+  }
 
 function runObjects(){
     snake.run();

@@ -51,7 +51,7 @@ class Snake{
    }
  }
 
-  loadBody(){
+  loadSegment(){
     this.body.push(createVector(this.head.x, this.head.y));
   }
 
