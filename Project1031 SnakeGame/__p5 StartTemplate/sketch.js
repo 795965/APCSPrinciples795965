@@ -10,6 +10,7 @@ var score, header_height, snake, difficulty;
 var gameState = 1;
 var h = 10;
 var food = [];
+var body = [];
 var btnEasy, btnMed, btnHard, btnInstructions, btnBTMI, btnBTME, btnReplay;
 function setup() {
   var cnv = createCanvas(800, 800);
@@ -75,6 +76,8 @@ function playGame(){
   frameRate(10);
   background(100, 200, 100);
   runObjects();
+  loadBody();
+  runBody();
 }
 
 function loadObjects(n){
@@ -125,3 +128,11 @@ function checkDifficulty(){ //check which difficulty button is isClicked
     difficulty = 'hard';
   }
 }
+
+function loadBody(){
+
+}
+
+  function runBody(){
+  
+  }
