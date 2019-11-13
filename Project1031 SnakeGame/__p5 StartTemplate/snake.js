@@ -4,7 +4,7 @@
 //  The setup function function is called once when your program begins
 
 class Snake{
-  constructor(x, y,w, c){
+  constructor(x, y, w, c){
     this.head =createVector(x,y);
     this.vel = createVector(0,0);
     this.w = 30;
@@ -20,24 +20,24 @@ class Snake{
 
   update(){
     this.keyPressed();
-    this.checkEdges();
-    for(var i = 0; i< food.length; i++){
-    if(this.head.x === food[i].loc.x &&
-       this.head.y === food[i].loc.y){
-         this.loadSegment(); //goal = add food to body
-         food.push(new Food(Math.floor(Math.random()*26)*30,Math.floor(Math.random()*26)*30, color(70)));
-
-     }
-   }
-    // update the body
-    if(this.body.length>1){
-      this.body[0].x = this.head.x;
-      this.body[0].y = this.head.y;
-    for(var i = this.body.length-1; i < 0; i--){
-
-      this.body[i].x = this.body[i-1].x;
-      this.body[i].y = this.body[i-1].y;
+   //  this.checkEdges();
+     for(var i = 0; i< food.length; i++){
+     if(this.head.x === food[i].loc.x &&
+        this.head.y === food[i].loc.y){
+          this.loadSegment();
+          food.push(new Food (Math.floor(Math.random()*25)*30,Math.floor(Math.random()*25)*30, color(70)));
+          score++;
+      }
     }
+     // update the body
+     for (i = this.body.length-1; i>=0; i--){
+     if (i >= 1){
+       this.body[i].x = this.body[i-1].x;
+       this.body[i].y = this.body[i-1].y;
+    }  if (i === 0){
+       this.body[i].x = this.head.x;
+       this.body[i].y = this.head.y;
+     }
   }
     // update the head
   //this.head.add(this.vel);
@@ -60,10 +60,11 @@ class Snake{
 
   tangled(){
     //for loop checking each segment in the segment array
-    for(i = 0; i < bodySegments.length; i++){
-      //if stament checking if the headations are equal to each other
-      if(this.head.x == bodySegments[i].x && this.head.y == bodySegments[i].y){
+    for(var i = 0; i < this.body.length; i++){
+      //if stament checking if the head locations are equal to each other
+      if(this.head.x === this.body[i].x || this.head.y === this.body[i].y){
         console.log("Game Over");
+        gameState == 4;
       }
     }
   }

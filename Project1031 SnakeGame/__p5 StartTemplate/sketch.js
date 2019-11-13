@@ -17,6 +17,7 @@ function setup() {
   cnv.position((windowWidth-width)/2, 30);
   background(217, 189, 124);
   header_height = 800;
+  score = 0;
   loadObjects(2);
   newButton();
 }
@@ -62,11 +63,11 @@ function startGame(){
     checkDifficulty(); // checks which difficulty is chosen
     if (difficulty === 'easy' || difficulty === 'medium'|| difficulty === 'hard'){
       if (difficulty === 'easy'){
-        loadObjects(2);
+        loadObjects(7);
       }else if (difficulty === 'medium'){
         loadObjects (5);
       }else if (difficulty === 'hard'){
-        loadObjects (7);
+        loadObjects (2);
       }
       gameState = 2; // play game
     }
@@ -76,8 +77,8 @@ function playGame(){
   frameRate(10);
   background(100, 200, 100);
   runObjects();
-  loadBody();
-  runBody();
+  text ("Score: " + score, 100, 50); //score
+  checkTangled();
 }
 
 function loadObjects(n){
@@ -94,21 +95,11 @@ function runObjects(){
     food[i].run();
   }
 }
-  // snake.run();
-  // food.render();
-  // if (checkTangled === true){
-  //   newGame();
-  // }
-  // if (getFood === true ){
-  //   startNewRound();
-  //}
-//}// end draw
 
-function newGame(){ //create snake and food objects
-}
 function checkTangled(){
   return snake.tangled();
 }
+
 function startNewRound(){
 
 }
@@ -128,11 +119,3 @@ function checkDifficulty(){ //check which difficulty button is isClicked
     difficulty = 'hard';
   }
 }
-
-function loadBody(){
-
-}
-
-  function runBody(){
-  
-  }
