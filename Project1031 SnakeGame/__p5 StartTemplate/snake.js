@@ -62,7 +62,7 @@ class Snake{
     //for loop checking each segment in the segment array
     for(var i = 0; i < this.body.length; i++){
       //if stament checking if the head locations are equal to each other
-      if(this.head.x === this.body[i].x || this.head.y === this.body[i].y){
+      if(this.body === this.body[i-1] || this.body === this.body[i-1]){
         console.log("Game Over");
         gameState == 4;
       }
