@@ -15,7 +15,7 @@ var btnEasy, btnMed, btnHard, btnInstructions, btnBTMI, btnBTME, btnReplay;
 function setup() {
   var cnv = createCanvas(800, 800);
   cnv.position((windowWidth-width)/2, 30);
-  background(217, 189, 124);
+  background(100, 200, 100);
   header_height = 800;
   score = 0;
   loadObjects(2);
@@ -44,7 +44,7 @@ function startGame(){
 //change look of this
   textSize(80);
 
-  fill(98,78,200);
+  fill(121, 76, 222);
   textAlign(RIGHT);
   textFont('Times New Roman')
   text ("Snake Game", 600, 200); //title
@@ -81,6 +81,13 @@ function playGame(){
   checkTangled();
 }
 
+function endGame(){
+background(255,21,21);
+ fill(5);
+ textSize(100);
+ text("GAME OVER!", 400, 500);
+}
+
 function loadObjects(n){
   snake = new Snake (Math.floor(Math.random()*26)*30,Math.floor(Math.random()*26)*30,30, color(227, 69, 7));
     for (var j = 0; j < n; j++){
@@ -97,16 +104,9 @@ function runObjects(){
 }
 
 function checkTangled(){
-  return snake.tangled();
-}
-
-function startNewRound(){
-
-}
-
-
-function getFood() {
-
+  if(snake.tangled() === true){
+    gameState  = 4;
+  }
 }
 
 function checkDifficulty(){ //check which difficulty button is isClicked
