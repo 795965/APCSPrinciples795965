@@ -44,6 +44,7 @@ function startGame(){
 //change look of this
   textSize(80);
 
+  background(100, 200, 100);
   fill(121, 76, 222);
   textAlign(RIGHT);
   textFont('Times New Roman')
@@ -87,11 +88,23 @@ background(255,21,21);
  textSize(100);
  text("GAME OVER!", 400, 300);
  textSize(45);
- text("Menu",560, 525, 200, 200);
- text("Replay", 55, 525, 200, 200);
+
  btnBTME.render();
  btnReplay.render();
-}
+ fill(20)
+ text("Menu",560, 525, 200, 200);
+ text("Replay", 55, 525, 200, 200);
+ if (btnBTME.isClicked()){ // go back to main menu
+ //  gameState = 1;
+   difficulty = 'startOver';
+
+   clearEverything();
+ }
+ if (btnReplay.isClicked()=== true){ // replay level
+   clearEverything();
+   }
+ }
+
 
 function loadObjects(n){
   snake = new Snake (Math.floor(Math.random()*26)*30,Math.floor(Math.random()*26)*30,30, color(227, 69, 7));
@@ -123,4 +136,12 @@ function checkDifficulty(){ //check which difficulty button is isClicked
   } if (btnHard.isClicked()=== true){
     difficulty = 'hard';
   }
+}
+function clearEverything() { //clear gamestate and score for restarting level
+  gameState = 1;
+  // startGame();
+  score = 0 ;
+  timerValue = 10;
+  food = [];
+
 }
