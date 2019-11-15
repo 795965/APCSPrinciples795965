@@ -4,8 +4,6 @@
 //  The setup function function is called once when your program begins
 
 
-
-
 var score, header_height, snake, difficulty;
 var gameState = 1;
 var h = 10;
@@ -35,9 +33,11 @@ function draw(){
 }
 
 function newButton(){
-  btnEasy = new Button(50, 450, 200, 200, color(78, 219, 18) );
+  btnEasy = new Button(50, 450, 200, 200, color(78, 219, 18));
   btnMed = new Button(300, 450, 200, 200, color (250,250,7));
   btnHard = new Button(550, 450, 200, 200, color(250, 0, 0));
+  btnBTME = new Button(550, 450, 200, 200, color(200));
+  btnReplay = new Button(50, 450, 200, 200, color(100))
 }
 
 function startGame(){
@@ -85,7 +85,12 @@ function endGame(){
 background(255,21,21);
  fill(5);
  textSize(100);
- text("GAME OVER!", 400, 500);
+ text("GAME OVER!", 400, 300);
+ textSize(45);
+ text("Menu",560, 525, 200, 200);
+ text("Replay", 55, 525, 200, 200);
+ btnBTME.render();
+ btnReplay.render();
 }
 
 function loadObjects(n){
