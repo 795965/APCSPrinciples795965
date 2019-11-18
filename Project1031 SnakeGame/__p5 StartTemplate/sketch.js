@@ -40,7 +40,7 @@ function newButton(){
   btnReplay = new Button(50, 450, 200, 200, color(100))
 }
 
-function startGame(){
+function startGame1(){
 //change look of this
   textSize(80);
 
