@@ -25,8 +25,16 @@ class Snake{
      if(this.head.x === food[i].loc.x &&
         this.head.y === food[i].loc.y){
           this.loadSegment();
+          if (type === 'garden'){
           food.push(new Food (Math.floor(Math.random()*25)*30,Math.floor(Math.random()*25)*30, color(70)));
           score++;
+        }else if (type === 'forest'){
+          food.push(new Food (Math.floor(Math.random()*25)*30,Math.floor(Math.random()*25)*30, color(202, 237, 0)));
+          score++;
+        }else if(type === 'sea'){
+          food.push(new Food (Math.floor(Math.random()*25)*30,Math.floor(Math.random()*25)*30, color(0, 255, 229)));
+          score++;
+        }
       }
     }
      // update the body

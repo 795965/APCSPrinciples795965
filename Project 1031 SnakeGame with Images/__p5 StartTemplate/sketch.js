@@ -4,7 +4,7 @@
 //  The setup function function is called once when your program begins
 
 
-var score, header_height, snake, difficulty;
+var score, header_height, snake, difficulty, type;
 var gameState = 5;
 var h = 10;
 var food = [];
@@ -21,19 +21,16 @@ function setup() {
 }
 
 function draw(){
-  if(gameState === 5){
-    pickSnakeType();
-  }
-  else  if (gameState ===1){
-      startGame(); //start screen
+    if (gameState ===1){
+      startGame2(); //start screen
     }else if (gameState === 2){
       playGame(); //game screen
     }else if (gameState === 3){
       instructionsText();
     }else if (gameState === 4){ //game over screen
       endGame();
-  } else if(gameState ===5){
-    startGame2();
+  } else if(gameState === 5){
+    pickSnakeType();
   }
 }
 
@@ -43,9 +40,9 @@ function newButton(){
   btnHard = new Button(550, 450, 200, 200, color(250, 0, 0));
   btnBTME = new Button(550, 450, 200, 200, color(200));
   btnReplay = new Button(50, 450, 200, 200, color(100));
-  btnSea = new Button(50, 450, 200, 200, color(0, 0, 255));
-  btnForest = new Button(300, 450, 200, 200, color (23, 200, 100));
-  btnGarden = new Button(550, 450, 200, 200, color(15, 71, 38));
+  btnSea = new Button(50, 200, 200, 200, color(0, 0, 255));
+  btnForest = new Button(300, 200, 200, 200, color (23, 200, 100));
+  btnGarden = new Button(550, 200, 200, 200, color(15, 71, 38));
 }
 
 function pickSnakeType(){
@@ -55,22 +52,30 @@ function pickSnakeType(){
   btnForest.render();
   btnGarden.render();
 
+  textSize(100);
+  fill(5);
+  text("Snake Game", 50, 150);
+
   textSize (45); //text for buttons
   fill(255);
-  text ("Sea", 55, 525, 200, 200);
-  text ("Forest", 560, 525, 200, 200);
-  text ("Garden", 305, 530, 200, 200);
+  text ("Sea", 70, 250, 200, 200);
+  text ("Forest", 575, 250, 200, 200);
+  text ("Garden", 320, 250, 200, 200);
 
-  pickSnake(); // checks which difficulty is chosen
-  if (difficulty === 'sea' || difficulty === 'forest'|| difficulty === 'garden'){
-    if (difficulty === 'sea'){
-      background()
-    }else if (difficulty === 'forest'){
-      loadObjects (5);
-    }else if (difficulty === 'garden'){
-      loadObjects (2);
+   pickSnake(); // checks which difficulty is chosen
+  if (type === 'sea' || type === 'forest'|| type === 'garden'){
+    if (type === 'sea'){
+      // background(40, 150, 200);
+      startGame1();
+      gameState = 1;
+    }else if (type === 'forest'){
+      startGame1();
+      gameState = 1;
+    }else if (type === 'garden'){
+      startGame1();
+      gameState = 1;
     }
-    gameState = 1; // play game
+     // play game
   }
 }// end Pick Snake
 
@@ -108,6 +113,7 @@ function startGame1(){
       gameState = 2; // play game
     }
 }
+
 function startGame2(){
 //change look of this
   textSize(80);
@@ -144,7 +150,13 @@ function startGame2(){
 
 function playGame(){
   frameRate(10);
-  background(100, 200, 100);
+  if(type === 'garden'){
+    background(100, 200, 100);
+  } else if (type === 'forest'){
+    background(19, 97, 50);
+  }else if(type === 'sea'){
+    background(11, 75, 179);
+  }
   runObjects();
   text ("Score: " + score, 100, 50); //score
   checkTangled();
@@ -175,10 +187,22 @@ background(255,21,21);
 
 
 function loadObjects(n){
+  if(type === 'garden'){
   snake = new Snake (Math.floor(Math.random()*26)*30,Math.floor(Math.random()*26)*30,30, color(227, 69, 7));
     for (var j = 0; j < n; j++){
       food[j] = new Food (Math.floor(Math.random()*26)*30,Math.floor(Math.random()*26)*30, color(70));
       }
+    }else if (type === 'forest'){
+      snake = new Snake (Math.floor(Math.random()*26)*30,Math.floor(Math.random()*26)*30,30, color(20));
+        for (var j = 0; j < n; j++){
+          food[j] = new Food (Math.floor(Math.random()*26)*30,Math.floor(Math.random()*26)*30, color(202, 237, 0));
+          }
+    } else if(type === 'sea'){
+      snake = new Snake (Math.floor(Math.random()*26)*30,Math.floor(Math.random()*26)*30,30, color(162, 0, 255));
+        for (var j = 0; j < n; j++){
+          food[j] = new Food (Math.floor(Math.random()*26)*30,Math.floor(Math.random()*26)*30, color(0, 255, 229));
+          }
+    }
   }
 
 function runObjects(){
@@ -203,6 +227,16 @@ function checkDifficulty(){ //check which difficulty button is isClicked
     difficulty = 'medium';
   } if (btnHard.isClicked()=== true){
     difficulty = 'hard';
+  }
+}
+function pickSnake(){ //check which difficulty button is isClicked
+  if (btnSea.isClicked()=== true){
+     type = 'sea';
+   }
+ if (btnForest.isClicked()===true){
+    type = 'forest';
+  } if (btnGarden.isClicked()=== true){
+    type = 'garden';
   }
 }
 function clearEverything() { //clear gamestate and score for restarting level
