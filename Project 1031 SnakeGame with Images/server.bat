@@ -1,3 +1,3 @@
-@echo off
-echo Starting server...
-python -m SimpleHTTPServer 80
+H:
+start http:??localhost:8000
+"C:\Python27\python.exe" -m SimpleHTTPServer
