@@ -18,6 +18,7 @@ function setup() {
   score = 0;
   loadObjects(2);
   newButton();
+  img = loadImage('snaketrombone.jpg'); // Load the image
 }
 
 function draw(){
@@ -32,6 +33,8 @@ function draw(){
   } else if(gameState === 5){
     pickSnakeType();
   }
+  // Displays the image at its actual size at point (0,0)
+  image(img, 0, 0);
 }
 
 function newButton(){
