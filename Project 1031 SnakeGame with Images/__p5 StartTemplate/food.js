@@ -29,6 +29,4 @@ update(){
 
 }
 
-
-
 }// end food class
