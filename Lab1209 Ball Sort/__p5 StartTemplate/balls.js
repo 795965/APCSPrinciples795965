@@ -17,13 +17,14 @@ run(){//allows me to call all methods in this class
 }
 
 render(){ //makes balls show up
-  fill(this.clr);
+  fill(this.red, 0,0);
+  red = random(0,800);
   ellipse(this.loc.x,this.loc.y,this.w,this.h);
 }
 
 getRed(){  //creates get-able variable for sketch class
   //this.loc.x=i*barWidth;
-  return this.red;
+   return this.red;
 }
 
 set(i){
