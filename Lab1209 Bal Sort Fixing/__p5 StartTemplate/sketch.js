@@ -2,44 +2,46 @@
 // 	Lab 1209 Ball Sort
 //  This is a comment
 //  The setup function function is called once when your program begins
+
 var balls=[];
-//put setup code here
+
 function setup(){
   var cnv=createCanvas(800,800);
   cnv.position((windowWidth-width)/2,30);
-  background(235);
+  background(5);
   loadBalls();
-  for(var i=0; i<balls.length; i++){
+
+  for(var i=0; i<balls.length; i++){ //for loop traverse array
     balls[i].run();
   }
-}
+}//end set up
 
-function draw(){
+function draw(){ //runs at 30 fps
   bubblesort();
 }
 
-function move(){
+function update(){ //to animate
   for(var i=0; i<balls.length; i++){
     balls[i].set(i);
   }
-  background(235);
+  background(5);
   for(var i=0; i<balls.length; i++){
-    balls[i].run();
+    balls[i].render();
   }
-}
+} //end update
 
-function bubblesort(){
+function bubblesort(){ //checks red value to sort them
     for (var j=0; j<balls.length-1; j++){
-      if(balls[j].a<balls[j+1].a){
+      if(balls[j].red<balls[j+1].red){
         swap(balls, j, j+1);
-        move();
+        update();
       }
     }
   }
 
 
 
-function loadBalls(){
+function loadBalls(){ //creates balls with values
   for (var x=0; x<20; x++){
     balls[x]= new Ball((40*x),400,40,40)
   }
