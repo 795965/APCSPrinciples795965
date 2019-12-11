@@ -1,5 +1,8 @@
 //Ziggy Sheynin
-//Lab 903 Extension
+//Practice Final 1210
+//
+//
+
 
 class Planet{
   constructor(x, y, dx, dy, id){
@@ -36,7 +39,7 @@ class Planet{
   update(){
     var planetDistance;
     if(this.id === 1){
-     planetDistance = this.loc.dist(ship.loc);
+     planetDistance = this.loc.dist(ships[i].loc);
    }
     if(planetDistance < 100){
        //move planet to random location
